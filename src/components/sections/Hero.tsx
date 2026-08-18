@@ -33,7 +33,7 @@ const PROJECTS_METADATA = [
 
 export default function Hero() {
   const [currentIdx, setCurrentIdx] = useState(0);
-  const [isMuted, setIsMuted] = useState(false); // Unmuted by default as requested
+  const [isMuted, setIsMuted] = useState(true); // Default muted to comply with browser autoplay policy
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -45,21 +45,18 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  // Handle Initial Playback & Mute/Unmute State
+  // Ensure initial playback starts immediately on load
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = isMuted;
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // If browser restricts unmuted autoplay, fallback to muted autoplay
-          if (videoRef.current) {
-            videoRef.current.muted = true;
-            setIsMuted(true);
-            videoRef.current.play().catch(() => {});
-          }
-        });
-      }
+      videoRef.current.play().catch(() => {
+        // Fallback safety if autoplay is delayed
+        if (videoRef.current) {
+          videoRef.current.muted = true;
+          setIsMuted(true);
+          videoRef.current.play().catch(() => {});
+        }
+      });
     }
   }, []);
 
@@ -69,6 +66,7 @@ export default function Hero() {
       const nextMuted = !isMuted;
       videoRef.current.muted = nextMuted;
       setIsMuted(nextMuted);
+      videoRef.current.play().catch(() => {});
     }
   };
 
@@ -112,6 +110,7 @@ export default function Hero() {
           poster="/Gallery/gallery-1.jpg"
           autoPlay
           loop
+          muted
           playsInline
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover scale-105 origin-center"
