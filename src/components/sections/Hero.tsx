@@ -33,7 +33,7 @@ const PROJECTS_METADATA = [
 
 export default function Hero() {
   const [currentIdx, setCurrentIdx] = useState(0);
-  const [isMuted, setIsMuted] = useState(true); // Default muted to comply with browser autoplay policy
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -45,20 +45,19 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  // Ensure initial playback starts immediately on load
+  // Guarantee playback start as soon as video is loaded
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted;
-      videoRef.current.play().catch(() => {
-        // Fallback safety if autoplay is delayed
-        if (videoRef.current) {
-          videoRef.current.muted = true;
-          setIsMuted(true);
-          videoRef.current.play().catch(() => {});
-        }
-      });
+    const video = videoRef.current;
+    if (video) {
+      video.muted = isMuted;
+      const playVideo = () => {
+        video.play().catch((err) => {
+          console.warn("Autoplay attempt failed:", err);
+        });
+      };
+      playVideo();
     }
-  }, []);
+  }, [isMuted]);
 
   // Toggle Sound On/Off
   const toggleMute = () => {
@@ -70,28 +69,29 @@ export default function Hero() {
     }
   };
 
-  // Auto Pause on Scroll Away, Auto Play on Scroll Back
+  // Scroll listener: pause video only when user has scrolled down past Hero section
   useEffect(() => {
-    const sectionEl = sectionRef.current;
-    if (!sectionEl) return;
+    const handleScroll = () => {
+      const video = videoRef.current;
+      const section = sectionRef.current;
+      if (!video || !section) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (videoRef.current) {
-            if (entry.isIntersecting) {
-              videoRef.current.play().catch(() => {});
-            } else {
-              videoRef.current.pause();
-            }
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
+      const rect = section.getBoundingClientRect();
+      // If hero section is visible in viewport or near top, play
+      if (rect.bottom > 100) {
+        if (video.paused) {
+          video.play().catch(() => {});
+        }
+      } else {
+        // Only pause when hero section is completely scrolled out of view
+        if (!video.paused) {
+          video.pause();
+        }
+      }
+    };
 
-    observer.observe(sectionEl);
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const safeIdx = currentIdx % PROJECTS_METADATA.length;
@@ -106,15 +106,21 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 bg-black">
         <video
           ref={videoRef}
-          src="/VID-20260810-WA0004.mp4"
           poster="/Gallery/gallery-1.jpg"
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
+          onLoadedData={() => {
+            if (videoRef.current) {
+              videoRef.current.play().catch(() => {});
+            }
+          }}
           className="absolute inset-0 w-full h-full object-cover scale-105 origin-center"
-        />
+        >
+          <source src="/VID-20260810-WA0004.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-black/25 z-10 transition-all duration-1000"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-transparent to-transparent z-10"></div>
       </div>
