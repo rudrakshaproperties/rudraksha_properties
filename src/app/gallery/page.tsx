@@ -1,107 +1,19 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Play, X, Maximize2, MapPin, Search } from "lucide-react";
 import Image from "next/image";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-
-const GALLERY_ITEMS = [
-  {
-    id: 1,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1200",
-    location: "Maldives",
-    category: "Luxury",
-    span: "md:col-span-2 md:row-span-2",
-  },
-  {
-    id: 2,
-    type: "video",
-    url: "https://assets.mixkit.co/videos/preview/mixkit-luxury-resort-over-the-water-4334-large.mp4",
-    thumbnail: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800",
-    location: "Tahiti",
-    category: "Resort",
-    span: "md:col-span-1 md:row-span-1",
-  },
-  {
-    id: 3,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1531737212413-667205e1cda7?q=80&w=800",
-    location: "Cappadocia, Turkey",
-    category: "Adventure",
-    span: "md:col-span-1 md:row-span-2",
-  },
-  {
-    id: 4,
-    type: "video",
-    url: "https://assets.mixkit.co/videos/preview/mixkit-beautiful-aerial-view-of-a-resort-in-the-maldives-24701-large.mp4",
-    thumbnail: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=800",
-    location: "Maldives",
-    category: "Aerial",
-    span: "md:col-span-1 md:row-span-1",
-  },
-  {
-    id: 5,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200",
-    location: "Bora Bora",
-    category: "Tropical",
-    span: "md:col-span-2 md:row-span-1",
-  },
-  {
-    id: 6,
-    type: "video",
-    url: "https://assets.mixkit.co/videos/preview/mixkit-luxury-hotel-swimming-pool-at-sunset-1249-large.mp4",
-    thumbnail: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=800",
-    location: "Dubai",
-    category: "Elite",
-    span: "md:col-span-1 md:row-span-1",
-  },
-  {
-    id: 7,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200",
-    location: "Lake Braies, Italy",
-    category: "Nature",
-    span: "md:col-span-1 md:row-span-1",
-  },
-  {
-    id: 8,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=1200",
-    location: "Norway Fjords",
-    category: "Cruise",
-    span: "md:col-span-1 md:row-span-1",
-  }
-];
+import { GALLERY_ITEMS } from "@/data/gallery";
 
 export default function GalleryPage() {
-  const [dbItems, setDbItems] = useState<any[]>([]);
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [filter, setFilter] = useState("All");
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchGallery = async () => {
-      try {
-        const res = await fetch('/api/gallery');
-        const data = await res.json();
-        if (data.success && data.data.length > 0) {
-          setDbItems(data.data);
-        }
-      } catch (error) {
-        console.error('Error fetching gallery:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchGallery();
-  }, []);
-
-  const displayItems = dbItems.length > 0 ? dbItems : GALLERY_ITEMS;
-  const categories = ["All", ...new Set(displayItems.map(item => item.category))];
+  const displayItems = GALLERY_ITEMS;
+  const categories = ["All", ...Array.from(new Set(displayItems.map(item => item.category)))];
   
   const filteredItems = filter === "All" 
     ? displayItems 
@@ -129,7 +41,7 @@ export default function GalleryPage() {
                transition={{ delay: 0.1 }}
                className="text-[36px] md:text-[84px] font-black uppercase tracking-tighter leading-[0.9] text-black mb-10 md:mb-12"
             >
-               The Global <br />
+               Project <br />
                <span className="text-black/20 italic">Gallery.</span>
             </motion.h1>
 
@@ -155,16 +67,16 @@ export default function GalleryPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {filteredItems.map((item, index) => (
               <motion.div
-                key={item._id || item.id}
+                key={item.id}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.05 }}
-                className={`relative overflow-hidden rounded-[20px] md:rounded-[48px] group cursor-pointer aspect-square md:aspect-auto ${item.span} min-h-[160px] md:min-h-[280px]`}
+                className={`relative overflow-hidden rounded-[20px] md:rounded-[48px] group cursor-pointer aspect-square md:aspect-auto ${item.span || ''} min-h-[160px] md:min-h-[280px]`}
                 onClick={() => setSelectedItem(item)}
               >
                 <Image 
-                  src={item.type === 'video' ? item.thumbnail : item.url}
+                  src={(item.type === 'video' && item.thumbnail) ? item.thumbnail : item.url}
                   alt={item.location}
                   fill
                   className="object-cover transition-all duration-[2000ms] group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0"

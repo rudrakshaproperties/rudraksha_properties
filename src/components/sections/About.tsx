@@ -119,7 +119,7 @@ export function About() {
               className="relative aspect-[16/10] w-full rounded-[40px] md:rounded-[50px] overflow-hidden shadow-2xl shadow-black/5 group"
             >
               <Image
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200"
+                src="/Gallery/gallery-1.jpg"
                 alt="Rudraksha Properties & Construction - Premium Real Estate Indore"
                 fill
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -143,7 +143,7 @@ export function About() {
             >
               <div className="relative aspect-[16/10] w-full rounded-[32px] md:rounded-[40px] overflow-hidden shadow-xl shadow-black/5 group">
                 <Image
-                  src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=800"
+                  src="/Gallery/gallery-2.jpg"
                   alt="Residential Plots - Rudraksha Properties Pithampur"
                   fill
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

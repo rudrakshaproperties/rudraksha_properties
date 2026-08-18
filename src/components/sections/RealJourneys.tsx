@@ -10,7 +10,7 @@ const stories = [
       name: "Rajesh Sharma",
       role: "Property Buyer, Indore",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800",
+      image: "/Gallery/gallery-1.jpg",
       heading: "Transparent process, legal plot, zero stress."
    },
    {
@@ -18,7 +18,7 @@ const stories = [
       name: "Priya & Suresh Patel",
       role: "Plot Buyers, Pithampur",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800",
+      image: "/Gallery/gallery-2.jpg",
       heading: "Personal attention that made all the difference."
    },
    {
@@ -26,7 +26,7 @@ const stories = [
       name: "Anil Joshi",
       role: "Commercial Space Buyer, Indore",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800",
+      image: "/Gallery/gallery-3.jpg",
       heading: "The best business investment decision I made."
    },
    {
@@ -34,7 +34,7 @@ const stories = [
       name: "Kavita Mishra",
       role: "Investor, Ujjain Road",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800",
+      image: "/Gallery/gallery-4.jpg",
       heading: "Expertise and integrity combined."
    },
    {
@@ -42,7 +42,7 @@ const stories = [
       name: "Mohit & Deepa Choudhary",
       role: "Turnkey Construction Client",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800",
+      image: "/Gallery/gallery-5.jpg",
       heading: "Construction quality that exceeded expectations."
    },
    {
@@ -50,7 +50,7 @@ const stories = [
       name: "Harish Verma",
       role: "Agricultural Land Buyer",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800",
+      image: "/Gallery/gallery-6.jpg",
       heading: "Professional coordination at every step."
    }
 ];
@@ -60,33 +60,40 @@ export function RealJourneys() {
    const [dbStories, setDbStories] = useState<any[]>([]);
 
    useEffect(() => {
-      // API fetch disabled to prevent loading travel testimonials from DB
+      // API fetch disabled to keep static real estate client reviews
    }, []);
 
-   const displayStories = stories;
+   const displayStories = dbStories.length > 0 ? dbStories : stories;
 
-   const next = () => setIndex((prev) => (prev + 1) % displayStories.length);
-   const prev = () => setIndex((prev) => (prev - 1 + displayStories.length) % displayStories.length);
+   const next = () => {
+      setIndex((prev) => (prev + 1) % displayStories.length);
+   };
+
+   const prev = () => {
+      setIndex((prev) => (prev - 1 + displayStories.length) % displayStories.length);
+   };
 
    return (
-      <section id="journeys" className="w-full bg-white py-10 md:py-15 flex flex-col justify-center min-h-[90vh] font-sans overflow-hidden">
-         <div className="max-w-[1400px] mx-auto px-3 md:px-3 lg:px-3 w-full">
-
-            {/* --- DUAL HEADER --- */}
-            <div className="flex flex-col lg:flex-row justify-between items-start gap-6 mb-6 md:mb-8">
-               {/* Left Part */}
-               <div className="max-w-2xl">
-                  <div className="flex items-center gap-2 mb-4">
-                     <div className="w-2 h-2 rounded-full bg-black shadow-[0_0_10px_rgba(141,214,214,0.5)]" />
-                     <span className="text-[11px] font-black uppercase tracking-[0.3em] text-black italic">Real Clients</span>
-                  </div>
+      <section className="w-full bg-[#f9f8f6] py-24 font-sans border-t border-black/5 overflow-hidden">
+         <div className="max-w-[1400px] mx-auto px-6">
+            
+            {/* Top Bar / Header */}
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
+               <div>
+                  <motion.span 
+                     initial={{ opacity: 0, x: -20 }}
+                     whileInView={{ opacity: 1, x: 0 }}
+                     className="text-[10px] font-black uppercase tracking-[0.4em] text-black/20 mb-4 block"
+                  >
+                     Verified Feedback
+                  </motion.span>
                   <AnimatePresence mode="wait">
-                     <motion.div
+                     <motion.div 
                         key={index}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="text-[28px] md:text-[42px] lg:text-[54px] font-bold text-black leading-[1.1] tracking-tighter"
+                        className="text-[32px] md:text-[54px] font-black uppercase tracking-tighter leading-[1] text-black max-w-[800px]"
                      >
                         {displayStories[index].heading}
                      </motion.div>
@@ -97,11 +104,11 @@ export function RealJourneys() {
                <div className="lg:max-w-[300px] flex flex-col items-start lg:items-end lg:text-right">
                   <div className="flex -space-x-3 mb-3">
                      {[
-                        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100",
-                        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100",
-                        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100",
-                        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=100",
-                        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100"
+                        "/Gallery/gallery-6.jpg",
+                        "/Gallery/gallery-7.jpg",
+                        "/Gallery/gallery-8.jpg",
+                        "/Gallery/gallery-9.jpg",
+                        "/Gallery/gallery-10.jpg"
                      ].map((url, i) => (
                         <div key={i} className="w-9 h-9 rounded-full border-2 border-white bg-neutral-200 overflow-hidden shadow-sm">
                            <img src={url} alt={`Client feedback avatar ${i + 1}`} className="w-full h-full object-cover" />

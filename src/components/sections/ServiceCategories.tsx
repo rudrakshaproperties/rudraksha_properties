@@ -22,7 +22,7 @@ const categories = [
     id: "01",
     title: "Residential Plots",
     description: "T&CP approved residential plots across Sagore Kuti, Betma Bypass, and Pithampur. Starting from ₹6 Lakhs.",
-    image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=800",
+    image: "/Gallery/gallery-1.jpg",
     color: "bg-[#eeeae7]",
     span: "md:col-span-8",
     details: {
@@ -46,7 +46,7 @@ const categories = [
     id: "02",
     title: "Commercial Plots",
     description: "Premium commercial plots across Indore's key commercial corridors. T&CP approved plots for business investment.",
-    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800",
+    image: "/Gallery/gallery-2.jpg",
     color: "bg-white",
     span: "md:col-span-4",
     details: {
@@ -69,7 +69,7 @@ const categories = [
     id: "03",
     title: "Turnkey Construction",
     description: "End-to-end customized home construction. From foundation to finishing — we build your dream home.",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800",
+    image: "/Gallery/gallery-9.jpg",
     color: "bg-[#eeeae7]",
     span: "md:col-span-12",
     details: {

@@ -1,71 +1,16 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Play, X, Maximize2, MapPin, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-const GALLERY_ITEMS = [
-  {
-    id: 1,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1200",
-    location: "Betma Bypass, Indore",
-    category: "Residential Plots",
-    span: "md:col-span-2 md:row-span-2",
-  },
-  {
-    id: 2,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200",
-    location: "Sagore Kuti, Pithampur",
-    category: "Plots Starting 6L",
-    span: "md:col-span-1 md:row-span-1",
-  },
-  {
-    id: 3,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800",
-    location: "Turnkey Construction, Indore",
-    category: "Custom House Construction",
-    span: "md:col-span-1 md:row-span-2",
-  },
-  {
-    id: 4,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800",
-    location: "Vijay Nagar Colony, Pithampur",
-    category: "Active Developments",
-    span: "md:col-span-1 md:row-span-1",
-  },
-  {
-    id: 5,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200",
-    location: "Betma Road Area",
-    category: "Highway Touch Land",
-    span: "md:col-span-2 md:row-span-1",
-  },
-  {
-    id: 6,
-    type: "image",
-    url: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=800",
-    location: "Badi Bagdun, Pithampur",
-    category: "Appreciating Assets",
-    span: "md:col-span-1 md:row-span-1",
-  }
-];
+import { GALLERY_ITEMS } from "@/data/gallery";
 
 export function Gallery() {
-  const [dbItems, setDbItems] = useState<any[]>([]);
   const [selectedItem, setSelectedItem] = useState<any>(null);
 
-  useEffect(() => {
-    // API fetch disabled to prevent loading travel gallery items from DB
-  }, []);
-
-  const displayItems = GALLERY_ITEMS;
+  const displayItems = GALLERY_ITEMS.slice(0, 6);
 
   return (
     <section id="gallery" className="w-full bg-white py-24 font-sans overflow-hidden">
@@ -106,18 +51,18 @@ export function Gallery() {
 
         {/* Bento Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-none md:grid-rows-3 gap-3 md:gap-4 h-auto md:h-[680px]">
-          {displayItems.map((item: any, index) => (
+          {displayItems.map((item, index) => (
             <motion.div
-              key={item._id || item.id}
+              key={item.id}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`relative overflow-hidden rounded-[15px] md:rounded-[30px] group cursor-pointer aspect-square md:aspect-auto ${item.span}`}
+              className={`relative overflow-hidden rounded-[15px] md:rounded-[30px] group cursor-pointer aspect-square md:aspect-auto ${item.span || ''}`}
               onClick={() => setSelectedItem(item)}
             >
               <Image 
-                src={item.type === 'video' ? item.thumbnail : item.url}
+                src={(item.type === 'video' && item.thumbnail) ? item.thumbnail : item.url}
                 alt={item.location}
                 fill
                 className="object-cover transition-all duration-[2000ms] group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0"

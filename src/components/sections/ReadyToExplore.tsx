@@ -46,7 +46,7 @@ export function ReadyToExplore() {
 
           {/* Background Image */}
           <img
-            src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=2070"
+            src="/Gallery/gallery-1.jpg"
             className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[4000ms]"
             alt="Book a site visit with Rudraksha Properties"
           />

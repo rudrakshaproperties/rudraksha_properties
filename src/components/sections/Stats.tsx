@@ -18,7 +18,7 @@ export function Stats() {
             className="relative rounded-[24px] xl:rounded-[32px] p-6 md:p-8 flex flex-col justify-between overflow-hidden h-[160px] md:h-[190px]"
           >
             <img
-              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop"
+              src="/Gallery/gallery-1.jpg"
               alt="Satisfied Clients - Rudraksha Properties"
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -27,10 +27,10 @@ export function Stats() {
             <div className="relative z-10 flex justify-end w-full">
               <div className="flex -space-x-3 mt-1">
                 <div className="w-10 h-10 rounded-full border-2 border-white/20 z-10 shadow-sm overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100" className="w-full h-full object-cover" alt="Happy client 1" />
+                  <img src="/Gallery/gallery-8.jpg" className="w-full h-full object-cover" alt="Happy client 1" />
                 </div>
                 <div className="w-10 h-10 rounded-full border-2 border-white/20 z-20 shadow-sm overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100" className="w-full h-full object-cover" alt="Happy client 2" />
+                  <img src="/Gallery/gallery-11.jpg" className="w-full h-full object-cover" alt="Happy client 2" />
                 </div>
                 <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border-2 border-white/20 z-30 shadow-sm">
                   <span className="text-white text-xs font-bold leading-none">+</span>
@@ -53,7 +53,7 @@ export function Stats() {
             className="relative rounded-[24px] xl:rounded-[32px] p-6 md:p-8 flex flex-col justify-center overflow-hidden h-[160px] md:h-[190px]"
           >
             <img
-              src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1000&auto=format&fit=crop"
+              src="/Gallery/gallery-6.jpg"
               alt="12 Years of Excellence - Rudraksha Properties"
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -74,7 +74,7 @@ export function Stats() {
             className="relative rounded-[24px] xl:rounded-[32px] p-6 md:p-8 flex flex-col justify-between overflow-hidden h-[160px] md:h-[190px]"
           >
             <img
-              src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1000&auto=format&fit=crop"
+              src="/Gallery/gallery-7.jpg"
               alt="4.8 Star Rating - Rudraksha Properties"
               className="absolute inset-0 w-full h-full object-cover"
             />

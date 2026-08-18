@@ -135,7 +135,7 @@ export function GlobalPresence() {
             {/* BOTTOM IMAGE CARD (Pithampur) */}
             <div className="flex-1 relative group rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-black/5 min-h-[260px]">
               <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200"
+                src="/Gallery/gallery-3.jpg"
                 className="absolute inset-0 w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-[2000ms]"
                 alt="Pithampur Industrial Area - Rudraksha Properties"
               />

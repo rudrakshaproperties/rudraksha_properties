@@ -52,8 +52,8 @@ export function MapCTA() {
           {/* Map/Image Space */}
           <div className="lg:w-1/2 min-h-[500px] relative overflow-hidden">
             <Image 
-              src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop"
-              alt="World Map"
+              src="/Gallery/gallery-2.jpg"
+              alt="Rudraksha Properties Location"
               fill
               className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
             />
