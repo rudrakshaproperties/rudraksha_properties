@@ -35,7 +35,6 @@ export default function Hero() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
 
   // Rotate project label highlights every 5 seconds
   useEffect(() => {
@@ -45,91 +44,44 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  // Guarantee playback start as soon as video is loaded
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.muted = isMuted;
-      const playVideo = () => {
-        video.play().catch((err) => {
-          console.warn("Autoplay attempt failed:", err);
-        });
-      };
-      playVideo();
-    }
-  }, [isMuted]);
-
-  // Toggle Sound On/Off
+  // Sync Mute state when toggled
   const toggleMute = () => {
     if (videoRef.current) {
       const nextMuted = !isMuted;
       videoRef.current.muted = nextMuted;
       setIsMuted(nextMuted);
-      videoRef.current.play().catch(() => {});
+      if (videoRef.current.paused) {
+        videoRef.current.play().catch(() => {});
+      }
     }
   };
-
-  // Scroll listener: pause video only when user has scrolled down past Hero section
-  useEffect(() => {
-    const handleScroll = () => {
-      const video = videoRef.current;
-      const section = sectionRef.current;
-      if (!video || !section) return;
-
-      const rect = section.getBoundingClientRect();
-      // If hero section is visible in viewport or near top, play
-      if (rect.bottom > 100) {
-        if (video.paused) {
-          video.play().catch(() => {});
-        }
-      } else {
-        // Only pause when hero section is completely scrolled out of view
-        if (!video.paused) {
-          video.pause();
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const safeIdx = currentIdx % PROJECTS_METADATA.length;
   const current = PROJECTS_METADATA[safeIdx] || PROJECTS_METADATA[0];
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-[99vh] flex flex-col justify-end pb-7 md:pb-15 px-3 lg:px-6 overflow-hidden rounded-b-[1rem] lg:rounded-b-[2rem]"
-    >
-      {/* Single Video Background */}
+    <section className="relative min-h-[99vh] flex flex-col justify-end pb-7 md:pb-15 px-3 lg:px-6 overflow-hidden rounded-b-[1rem] lg:rounded-b-[2rem]">
+      {/* Single Background Video */}
       <div className="absolute inset-0 z-0 bg-black">
         <video
           ref={videoRef}
-          poster="/Gallery/gallery-1.jpg"
+          src="/VID-20260810-WA0004.mp4"
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
-          onLoadedData={() => {
-            if (videoRef.current) {
-              videoRef.current.play().catch(() => {});
-            }
-          }}
           className="absolute inset-0 w-full h-full object-cover scale-105 origin-center"
-        >
-          <source src="/VID-20260810-WA0004.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-black/25 z-10 transition-all duration-1000"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-transparent to-transparent z-10"></div>
       </div>
 
-      {/* Mute/Unmute Floating Button */}
+      {/* Sound Toggle Button */}
       <button
         onClick={toggleMute}
         aria-label={isMuted ? "Unmute video sound" : "Mute video sound"}
-        className="absolute top-28 right-6 z-30 flex items-center gap-1.5 bg-transparent text-white/80 hover:text-white px-2 py-1 transition-all duration-300 text-[9px] font-bold uppercase tracking-[0.2em] cursor-pointer group"
+        className="absolute top-28 right-6 z-30 flex items-center gap-1.5 bg-black/30 hover:bg-black/60 backdrop-blur-md border border-white/20 text-white px-3 py-1.5 rounded-full transition-all duration-300 text-[10px] font-bold uppercase tracking-[0.15em] cursor-pointer group shadow-lg"
       >
         {isMuted ? (
           <>
