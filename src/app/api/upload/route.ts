@@ -24,7 +24,7 @@ export async function POST(request: Request) {
       cloudinary.uploader.upload_stream(
         {
           resource_type: 'auto',
-          folder: 'orovista-packages',
+          folder: 'rudraksha-properties',
         },
         (error, result) => {
           if (error) reject(error);

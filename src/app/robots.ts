@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/admin/',
     },
-    sitemap: 'https://www.orovistaholidays.com/sitemap.xml',
+    sitemap: 'https://rudrakshaproperties.com/sitemap.xml',
   };
 }

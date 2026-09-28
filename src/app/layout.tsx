@@ -13,7 +13,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.rudrakshaproperties.com"),
+  metadataBase: new URL("https://rudrakshaproperties.com"),
   alternates: {
     canonical: "/",
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rudraksha Properties & Construction | Premium Real Estate Indore",
     description: "Indore's most trusted real estate and construction firm — 12 years of excellence. T&CP approved plots, residential & commercial properties across Betma Bypass, Sagore Kuti, Pithampur & MP. From Zero To Peak.",
-    url: "https://www.rudrakshaproperties.com",
+    url: "https://rudrakshaproperties.com",
     siteName: "Rudraksha Properties & Construction",
     images: [
       {
@@ -86,8 +86,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "RealEstateAgent",
               "name": "Rudraksha Properties & Construction",
-              "@id": "https://www.rudrakshaproperties.com",
-              "url": "https://www.rudrakshaproperties.com",
+              "@id": "https://rudrakshaproperties.com",
+              "url": "https://rudrakshaproperties.com",
               "telephone": "+919009250061",
               "email": "rudrakshproperties7079@gmail.com",
               "openingHours": "Mo-Su 10:00-19:00",

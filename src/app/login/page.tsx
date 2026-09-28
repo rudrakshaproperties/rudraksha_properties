@@ -47,7 +47,7 @@ export default function LoginPage() {
       >
         <div className="text-center mb-12">
           <h1 className="text-[42px] md:text-[54px] font-black uppercase tracking-tighter leading-none text-black">
-            Orovista <span className="text-black/20 italic">Admin.</span>
+            Rudraksha <span className="text-black/20 italic">Admin.</span>
           </h1>
           <p className="text-black/40 font-bold uppercase tracking-widest text-[11px] mt-4">
             Elite Access Portal
@@ -72,7 +72,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-[#f8f6f4] border-none rounded-[20px] pl-14 pr-6 py-5 text-black font-bold focus:ring-2 ring-black/5 outline-none transition-all"
-                  placeholder="admin@orovista.com"
+                  placeholder="admin@rudrakshaproperties.com"
                 />
               </div>
             </div>

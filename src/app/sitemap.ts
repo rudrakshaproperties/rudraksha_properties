@@ -12,14 +12,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const packages = await Package.find({}).sort({ createdAt: -1 });
 
   const blogUrls = blogs.map((blog) => ({
-    url: `https://www.orovistaholidays.com/journal/${blog.slug || slugify(blog.title) || blog._id}`,
+    url: `https://rudrakshaproperties.com/journal/${blog.slug || slugify(blog.title) || blog._id}`,
     lastModified: blog.updatedAt || blog.createdAt || new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
 
   const packageUrls = packages.map((pkg) => ({
-    url: `https://www.orovistaholidays.com/packages/${pkg.slug || slugify(pkg.title) || pkg._id}`,
+    url: `https://rudrakshaproperties.com/packages/${pkg.slug || slugify(pkg.title) || pkg._id}`,
     lastModified: pkg.updatedAt || pkg.createdAt || new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.9,
@@ -27,19 +27,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: 'https://www.orovistaholidays.com',
+      url: 'https://rudrakshaproperties.com',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: 'https://www.orovistaholidays.com/gallery',
+      url: 'https://rudrakshaproperties.com/gallery',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://www.orovistaholidays.com/journal',
+      url: 'https://rudrakshaproperties.com/journal',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,

@@ -35,7 +35,7 @@ const rightAdvantages = [
   }
 ];
 
-export function OrovistaAdvantage() {
+export function RudrakshaAdvantage() {
   return (
     <section id="advantage" className="w-full bg-white pt-20 font-sans overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-3 md:px-3">

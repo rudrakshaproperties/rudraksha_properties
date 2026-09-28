@@ -14,7 +14,7 @@ import { ServiceCategories } from "@/components/sections/ServiceCategories";
 import { Packages } from "@/components/sections/Packages";
 import { Gallery } from "@/components/sections/Gallery";
 import { GlobalPresence } from "@/components/sections/GlobalPresence";
-import { OrovistaAdvantage } from "@/components/sections/OrovistaAdvantage";
+import { RudrakshaAdvantage } from "@/components/sections/RudrakshaAdvantage";
 import { RealJourneys } from "@/components/sections/RealJourneys";
 import { FloatingCTA } from "@/components/sections/FloatingCTA";
 import { TrustBadges } from "@/components/sections/TrustBadges";
@@ -29,10 +29,9 @@ export default function Home() {
         <Team />
         <About />
         <ServiceCategories />
-        
         <Packages />
         <Gallery />
-        <OrovistaAdvantage />
+        <RudrakshaAdvantage />
         <GlobalPresence />
       <TrustBadges />
         <RealJourneys />

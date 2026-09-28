@@ -22,8 +22,8 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         sender: {
-          name: 'Rudraksha Website',
-          email: 'aafaqueshaikh555@gmail.com'
+          name: 'rudraksha properties',
+          email: 'rudrakshproperties7079@gmail.com'
         },
         to: [
           {

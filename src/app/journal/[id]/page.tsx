@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     title: blog.title,
     description: blog.description,
     openGraph: {
-      title: `${blog.title} | Orovista Journal`,
+      title: `${blog.title} | Rudraksha Journal`,
       description: blog.description,
       images: [blog.image],
       type: "article",
@@ -62,21 +62,21 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ id:
     "image": blog.image,
     "author": {
       "@type": "Organization",
-      "name": "Orovista Specialist"
+      "name": "Rudraksha Specialist"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Orovista Holidays",
+      "name": "Rudraksha Properties & Construction",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.orovistaholidays.com/assets/orovistaholidayslogo.png"
+        "url": "https://rudrakshaproperties.com/assets/rudraksha-logo.png"
       }
     },
     "datePublished": blog.createdAt,
     "dateModified": blog.updatedAt || blog.createdAt,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://www.orovistaholidays.com/journal/${id}`
+      "@id": `https://rudrakshaproperties.com/journal/${id}`
     }
   };
 
@@ -157,7 +157,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ id:
                </div>
                <div>
                   <span className="text-[10px] font-black text-black/20 uppercase tracking-widest block">Written By</span>
-                  <span className="text-[14px] font-black uppercase text-black">Orovista Specialist</span>
+                  <span className="text-[14px] font-black uppercase text-black">Rudraksha Specialist</span>
                </div>
             </div>
             
