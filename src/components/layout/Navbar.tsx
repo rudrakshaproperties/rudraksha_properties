@@ -61,19 +61,12 @@ export default function Navbar({ isSolid = false }: { isSolid?: boolean }) {
         )}
       >
         <Link href="/" className="transition-all duration-500 flex items-center gap-2.5">
-          {/* LOGO PLACEHOLDER — Replace this block with <Image src="/logo.png" ... /> once the official logo is provided */}
+          {/* LOGO */}
           <div className={cn(
             "relative w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center overflow-hidden transition-all duration-500 shrink-0",
-            effectiveScrolled ? "bg-black ring-1 ring-black/10" : "bg-white/95 backdrop-blur-sm"
+            effectiveScrolled ? "bg-white ring-1 ring-black/10" : "bg-white/95 backdrop-blur-sm"
           )}>
-            {/* Placeholder monogram — swap for actual logo image */}
-            <span className={cn(
-              "font-headline font-black text-[18px] md:text-[20px] tracking-tighter transition-colors duration-500",
-              effectiveScrolled ? "text-white" : "text-black"
-            )}>
-              R
-            </span>
-            {/* TODO: Replace with <Image src="/logo.png" alt="Rudraksha Properties" fill className="object-contain" /> */}
+            <Image src="/logo/rudraksha_png_logo.png" alt="Rudraksha Properties" fill className="object-contain p-1" />
           </div>
           <div className="flex flex-col leading-none">
             <span className={cn(

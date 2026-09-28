@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { MessageCircle, Instagram, Facebook, Youtube, MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export default function Footer() {
@@ -24,8 +25,8 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="inline-block mb-6">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center font-black text-sm text-white">
-                  R
+                <div className="relative w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center overflow-hidden shrink-0 bg-white ring-1 ring-black/10">
+                  <Image src="/logo/rudraksha_png_logo.png" alt="Rudraksha Properties" fill className="object-contain p-1" />
                 </div>
                 <span className="text-[14px] font-black tracking-tight text-black/70 uppercase">
                   Rudraksha

@@ -69,7 +69,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ id:
       "name": "Rudraksha Properties & Construction",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rudrakshaproperties.com/assets/rudraksha-logo.png"
+        "url": "https://rudrakshaproperties.com/logo/rudraksha_png_logo.png"
       }
     },
     "datePublished": blog.createdAt,

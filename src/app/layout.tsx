@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     images: ["/assets/rudraksha-og.jpg"],
   },
   icons: {
-    icon: "/assets/rudraksha-logo.png",
-    apple: "/assets/rudraksha-logo.png",
+    icon: "/logo/rudraksha_ico_logo.ico",
+    apple: "/logo/rudraksha_png_logo.png",
   },
 };
 
