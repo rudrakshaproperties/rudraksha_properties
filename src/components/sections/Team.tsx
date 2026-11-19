@@ -366,11 +366,9 @@ export function Team() {
                   { name: "Gokul Choudhary", label: "04. Channel Partner", phone: "8319645856", image: "/channelpartners/Gokul_choudhary_4.jpeg" },
                   { name: "Dinesh Minawa", label: "05. Channel Partner", phone: "8234823453", image: "/channelpartners/Dinesh_minawa_5.jpeg", position: "center 15%" },
                   { name: "Arjun Verma", label: "06. Channel Partner", phone: "9165523333", image: "/channelpartners/Arjun_verma_6.jpeg", position: "center 30%" },
-                  { name: "Gabbar Singh Rana", label: "07. Channel Partner", phone: "8817181518", image: "/channelpartners/Gabbar_Singh_Rana_7.jpeg" },
-                  { name: "Mahesh Deshwali", label: "08. Channel Partner", phone: "9770261882", image: "/channelpartners/Mahesh_deshwali_8.jpeg", position: "center 20%" },
-                  { name: "Shekhar Patel", label: "09. Channel Partner", phone: "9926612302", image: "/channelpartners/Shekhar_patel_9.jpeg" },
-                  { name: "Kavita Selar", label: "10. Channel Partner", phone: "9630163853", image: "/channelpartners/Kavita_selar_10.jpeg", position: "center" },
-                  { name: "Pradeep Khanve", label: "11. Channel Partner", phone: "9630557687", image: "/channelpartners/pradeep_khanve_11.jpeg", position: "center 15%" }
+                  { name: "Mahesh Deshwali", label: "07. Channel Partner", phone: "9770261882", image: "/channelpartners/Mahesh_deshwali_8.jpeg", position: "center 20%" },
+                  { name: "Shekhar Patel", label: "08. Channel Partner", phone: "9926612302", image: "/channelpartners/Shekhar_patel_9.jpeg" },
+                  { name: "Pradeep Khanve", label: "09. Channel Partner", phone: "9630557687", image: "/channelpartners/pradeep_khanve_11.jpeg", position: "center 15%" }
                ].map((partner, index) => (
                   <motion.div
                      key={partner.name}
